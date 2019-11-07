@@ -1,16 +1,21 @@
 package com.victoryw.refactor.test.framework.facade;
 
+
+
 public class TestConfiguration implements ProjectConfigruation {
 
 
+    private String baseLineJarPath = "../baseline_code/build/libs/baseline_code.jar";
+    private String baseLineDependencePath = "../baseline_code/build/target/deps";
+
     @Override
     public String getProjectBaseLinePath() {
-        return "../baseline_code/build/libs/baseline_code.jar";
+        return baseLineJarPath;
     }
 
     @Override
     public String getProjectBaseLineDependenciesPath() {
-        return "../baseline_code/build/target/deps";
+        return baseLineDependencePath;
     }
 
     @Override
@@ -36,5 +41,13 @@ public class TestConfiguration implements ProjectConfigruation {
     @Override
     public String getProjectReloadConfig() {
         return null;
+    }
+
+    public void setBaseLineJarPath(String string) {
+        this.baseLineJarPath = string;
+    }
+
+    public void setBaseLineDependencePath(String baseLineDependencePath) {
+        this.baseLineDependencePath = baseLineDependencePath;
     }
 }

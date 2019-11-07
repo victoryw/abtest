@@ -3,8 +3,10 @@ package com.victoryw.refactor.test.framework.facade;
 import com.victoryw.ab.test.Sample;
 import com.victoryw.refactor.test.framework.core.StaticMethodRunner;
 import org.junit.jupiter.api.Test;
+import org.xeustechnologies.jcl.exception.JclException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class BaseLineUtilityFactoryTest {
 
@@ -33,5 +35,27 @@ class BaseLineUtilityFactoryTest {
         Object baseLineResult = staticMethodRunner.run("example2");
         //Then
         assertEquals("21_baseline", baseLineResult);
+    }
+
+    @Test
+    void should_throw_exception_when_jar_missing() {
+        //Given
+        final TestConfiguration configuration = new TestConfiguration();
+        configuration.setBaseLineJarPath("./error/path");
+        final JclException jclException = assertThrows(JclException.class, () -> {
+            BaseLineUtilityFacade baseLineUtilityFacade = BaseLineUtilityFactory.createFacade(configuration);
+        });
+        assertEquals(jclException.getMessage(), "File/Path does not exist");
+    }
+
+    @Test
+    void should_throw_exception_when_dependency_path_missing() {
+        //Given
+        final TestConfiguration configuration = new TestConfiguration();
+        configuration.setBaseLineDependencePath("./error/path");
+        final JclException jclException = assertThrows(JclException.class, () -> {
+            BaseLineUtilityFacade baseLineUtilityFacade = BaseLineUtilityFactory.createFacade(configuration);
+        });
+        assertEquals(jclException.getMessage(), "File/Path does not exist");
     }
 }
