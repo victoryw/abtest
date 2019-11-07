@@ -10,7 +10,7 @@ public class TestConfiguration implements ProjectConfigruation {
 
     @Override
     public String getProjectBaseLineDependenciesPath() {
-        return "../baseline_code/build/deps/";
+        return "../baseline_code/build/target/deps";
     }
 
     @Override
