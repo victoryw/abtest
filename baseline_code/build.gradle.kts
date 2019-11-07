@@ -14,7 +14,6 @@ configure<JavaPluginConvention> {
 
 dependencies {
     implementation("org.jooq:jool-java-8:0.9.14")
-    implementation("org.jooq:jool-java-8:0.9.14")
 }
 
 tasks.register("copyDeps", Copy::class) {
