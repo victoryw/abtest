@@ -19,26 +19,26 @@ public class BaseLineUtilityFactory {
     }
 
     private static void setSystemPropertiesToRefactorEnv(String cbsConfigFilePath, String cbsRefactorConfigPath) {
-        System.setProperty(cbsConfigFilePath, cbsRefactorConfigPath);
+//        System.setProperty(cbsConfigFilePath, cbsRefactorConfigPath);
     }
 
-    private static void setSystemEnvConfigToBaselineEnv(CbsConfigruation configuration, BaseLineUtilityFacade baseLineUtilityFacade) {
-        System.setProperty(configuration.getCbsConfigFilePath(),
-                configuration.getCbsBaseLineConfigPath());
-        BaseLineUtilityFactory.loadBaseLineConfig(baseLineUtilityFacade,
-                configuration.getCbsEnvClassPath(),
-                configuration.getCbsReloadConfig());
+    private static void setSystemEnvConfigToBaselineEnv(ProjectConfigruation configuration, BaseLineUtilityFacade baseLineUtilityFacade) {
+//        System.setProperty(configuration.getProjectConfigFilePath(),
+//                configuration.getProjectBaseLineConfigPath());
+//        BaseLineUtilityFactory.loadBaseLineConfig(baseLineUtilityFacade,
+//                configuration.getProjectEnvClassPath(),
+//                configuration.getProjectReloadConfig());
     }
 
-    public static BaseLineUtilityFacade createFacade(CbsConfigruation configuration) {
-        final ClassLoader classLoader = createClassLoader(configuration.getCbsBaseLinePath(),
-                configuration.getCbsBaseLineDependenciesPath());
+    public static BaseLineUtilityFacade createFacade(ProjectConfigruation configuration) {
+        final ClassLoader classLoader = createClassLoader(configuration.getProjectBaseLinePath(),
+                configuration.getProjectBaseLineDependenciesPath());
         final BaseLineUtilityFacade baseLineUtilityFacade = new BaseLineUtilityFacade(classLoader);
 
         setSystemEnvConfigToBaselineEnv(configuration, baseLineUtilityFacade);
 
-        setSystemPropertiesToRefactorEnv(configuration.getCbsConfigFilePath(),
-                configuration.getCbsRefactorConfigPath());
+        setSystemPropertiesToRefactorEnv(configuration.getProjectConfigFilePath(),
+                configuration.getProjectRefactorConfigPath());
 
         return baseLineUtilityFacade;
     }

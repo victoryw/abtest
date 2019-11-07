@@ -1,5 +1,7 @@
 package com.victoryw.refactor.test.framework.core;
 
+import com.victoryw.refactor.test.framework.core.ObjectComparator;
+import com.victoryw.refactor.test.framework.core.ObjectCopier;
 import com.victoryw.refactor.test.framework.core.object.compare.sample.ComplexClass;
 import com.victoryw.refactor.test.framework.core.object.compare.sample.SimpleClass;
 import com.victoryw.refactor.test.framework.core.object.compare.sample.SimpleClassCopy;

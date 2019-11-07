@@ -1,6 +1,6 @@
 package com.victoryw.refactor.test.framework.facade;
 
-import com.victoryw.refactor.test.framework.core.InstanceMethodRunner;
+import com.victoryw.ab.test.Sample;
 import com.victoryw.refactor.test.framework.core.StaticMethodRunner;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +14,12 @@ class BaseLineUtilityFactoryTest {
         BaseLineUtilityFacade baseLineUtilityFacade = BaseLineUtilityFactory.createFacade(new TestConfiguration());
         //When
         final StaticMethodRunner staticMethodRunner = baseLineUtilityFacade.createStaticMethodRunner();
-        staticMethodRunner.init("com.victoryw.baseline.code");
-        Object getConfigFilePath = staticMethodRunner.run("getConfig");
+        staticMethodRunner.init("com.victoryw.ab.test.Sample");
+        Object baseLineResult = staticMethodRunner.run("example1");
+        final String refactorResult = Sample.example1();
+
         //Then
-        assertEquals("./misc_base_line/app_config/", getConfigFilePath);
+        assertEquals("baseline", baseLineResult);
+        assertEquals("refactor", refactorResult);
     }
 }

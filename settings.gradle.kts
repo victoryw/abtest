@@ -8,4 +8,4 @@
  */
 
 rootProject.name = "abJavaTest"
-include("framework")
+include("framework", "baseline_code")

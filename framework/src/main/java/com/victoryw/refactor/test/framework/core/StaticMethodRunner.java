@@ -1,5 +1,7 @@
 package com.victoryw.refactor.test.framework.core;
 
+import org.joor.Reflect;
+
 import static org.joor.Reflect.on;
 
 public class StaticMethodRunner {
@@ -11,7 +13,8 @@ public class StaticMethodRunner {
     }
 
     public Object run(String methodName) {
-        return on(this.className, this.baseLineProjectClassLoader).call(methodName).get();
+        final Reflect on = on(this.className, this.baseLineProjectClassLoader);
+        return on.call(methodName).get();
     }
 
     public void init(String className) {
