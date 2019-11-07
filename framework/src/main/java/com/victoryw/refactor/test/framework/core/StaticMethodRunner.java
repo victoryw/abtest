@@ -1,0 +1,20 @@
+package com.victoryw.refactor.test.framework.core;
+
+import static org.joor.Reflect.on;
+
+public class StaticMethodRunner {
+    private final ClassLoader baseLineProjectClassLoader;
+    private String className;
+
+    public StaticMethodRunner(final ClassLoader baseLineProjectClassLoader) {
+        this.baseLineProjectClassLoader = baseLineProjectClassLoader;
+    }
+
+    public Object run(String methodName) {
+        return on(this.className, this.baseLineProjectClassLoader).call(methodName).get();
+    }
+
+    public void init(String className) {
+        this.className = className;
+    }
+}
