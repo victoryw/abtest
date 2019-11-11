@@ -29,10 +29,9 @@ class ObjectComparatorTest {
     void should_be_equal_when_the_objects_reference_to_same_address() {
         //GIVEN
         SimpleClass simpleClass = new SimpleClass(5);
-        SimpleClass other = simpleClass;
 
         //WHEN THEN
-        objectComparator.assertValueEqual(simpleClass, other);
+        objectComparator.assertValueEqual(simpleClass, simpleClass);
     }
 
     @Test

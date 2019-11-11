@@ -23,9 +23,13 @@ dependencies {
 
     // Use JUnit Jupiter API for testing.
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
-
+    testImplementation("org.springframework:spring-test:5.2.1.RELEASE")
+    testImplementation("org.springframework:spring-web:5.2.1.RELEASE")
+    testImplementation("org.springframework:spring-webmvc:5.2.1.RELEASE")
+    testImplementation("javax.servlet:javax.servlet-api:4.0.1")
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+
 }
 
 val test by tasks.getting(Test::class) {

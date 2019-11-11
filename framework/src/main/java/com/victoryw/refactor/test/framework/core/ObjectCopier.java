@@ -1,6 +1,13 @@
 package com.victoryw.refactor.test.framework.core;
 
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.converters.Converter;
+import com.thoughtworks.xstream.converters.MarshallingContext;
+import com.thoughtworks.xstream.converters.UnmarshallingContext;
+import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
+import java.util.Objects;
 
 public class ObjectCopier {
 
@@ -8,6 +15,8 @@ public class ObjectCopier {
     private final XStream xStreamFromBaseLineClassLoader = new XStream();
 
     public ObjectCopier(ClassLoader baseLineProjectClassLoader) {
+        xStreamFromBaseLineClassLoader.registerConverter(new AppClassLoaderConverter());
+        xStreamFromDefaultClassLoader.registerConverter(new AppClassLoaderConverter());
         xStreamFromBaseLineClassLoader.setClassLoader(baseLineProjectClassLoader);
     }
 
