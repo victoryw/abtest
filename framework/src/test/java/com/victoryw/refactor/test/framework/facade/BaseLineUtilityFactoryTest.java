@@ -1,6 +1,7 @@
 package com.victoryw.refactor.test.framework.facade;
 
 import com.victoryw.ab.test.Sample;
+import com.victoryw.refactor.test.framework.core.InstanceMethodRunner;
 import com.victoryw.refactor.test.framework.core.StaticMethodRunner;
 import org.junit.jupiter.api.Test;
 import org.xeustechnologies.jcl.exception.JclException;
@@ -23,6 +24,19 @@ class BaseLineUtilityFactoryTest {
         //Then
         assertEquals("baseline", baseLineResult);
         assertEquals("refactor", refactorResult);
+    }
+
+    @Test
+    void createFacadeInstanceMethod() {
+        //Given
+        BaseLineUtilityFacade baseLineUtilityFacade = BaseLineUtilityFactory.createFacade(new TestConfiguration());
+        //When
+        Sample sample = new Sample();
+        final InstanceMethodRunner instanceMethodRunner = baseLineUtilityFacade.createInstanceMethodRunner();
+        //Then
+        instanceMethodRunner.init(sample);
+        assertEquals("baseline", instanceMethodRunner.run("example"));
+        assertEquals("refactor", sample.example());
     }
 
     @Test

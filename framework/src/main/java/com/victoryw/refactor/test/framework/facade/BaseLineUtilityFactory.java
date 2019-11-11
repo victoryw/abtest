@@ -8,9 +8,10 @@ public class BaseLineUtilityFactory {
 
     private static ClassLoader createClassLoader(String cbsBaseLinePath, String cbsBaseLineDependenciesPath) {
         System.setProperty("jcl.suppressMissingResourceException", String.valueOf(false));
-        JarClassLoader baseLineProjectClassLoader = new JarClassLoader();
 
+        JarClassLoader baseLineProjectClassLoader = new JarClassLoader();
         baseLineProjectClassLoader.addAll(Arrays.asList(cbsBaseLinePath, cbsBaseLineDependenciesPath));
+
         return baseLineProjectClassLoader;
     }
 

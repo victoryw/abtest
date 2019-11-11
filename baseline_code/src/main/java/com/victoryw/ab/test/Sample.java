@@ -11,4 +11,8 @@ public class Sample {
         final Seq<Integer> concat = Seq.of(1, 2, 3).concat(Seq.of(4, 5, 6));
         return concat.reduce(0, Integer::sum).toString().concat("_baseline");
     }
+
+    public String example() {
+        return example1();
+    }
 }
