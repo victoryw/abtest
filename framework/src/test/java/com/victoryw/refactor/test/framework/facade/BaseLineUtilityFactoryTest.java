@@ -27,7 +27,7 @@ class BaseLineUtilityFactoryTest {
     }
 
     @Test
-    void createFacadeInstanceMethod() {
+    void createFacadeInstanceMethod() throws Throwable {
         //Given
         BaseLineUtilityFacade baseLineUtilityFacade = BaseLineUtilityFactory.createFacade(new TestConfiguration());
         //When

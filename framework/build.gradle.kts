@@ -27,6 +27,7 @@ dependencies {
     testImplementation("org.springframework:spring-web:5.2.1.RELEASE")
     testImplementation("org.springframework:spring-webmvc:5.2.1.RELEASE")
     testImplementation("javax.servlet:javax.servlet-api:4.0.1")
+    testImplementation("org.mockito:mockito-core:3.1.0")
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
 

@@ -1,5 +1,7 @@
 package com.victoryw.refactor.test.framework.core;
 
+import org.joor.ReflectException;
+
 import java.util.Arrays;
 
 import static org.joor.Reflect.on;
@@ -16,7 +18,7 @@ public class InstanceMethodRunner {
         this.instanceInOtherClassLoader = this.copier.copyObjectToTargetClassLoader(sourceInstance);
     }
 
-    public Object run(String methodName, final Object[] parameters) {
+    private Object run(String methodName, final Object[] parameters) {
         final Object[] args = Arrays.stream(parameters)
                 .map(this.copier::copyObjectToTargetClassLoader).toArray();
 
@@ -26,7 +28,19 @@ public class InstanceMethodRunner {
         return this.copier.copyObjectToCurrentClassLoader(resultInSample);
     }
 
-    public Object run(String methodName) {
-        return this.run(methodName, new Object[]{});
+    public Object run(String methodName) throws Throwable {
+        try {
+            return this.run(methodName, new Object[]{});
+        } catch (ReflectException exception) {
+            if(exception.getCause() == null) {
+                throw exception;
+            }
+
+            if(exception.getCause().getCause() == null) {
+                throw exception.getCause();
+            }
+
+            throw exception.getCause().getCause();
+        }
     }
 }
